@@ -1,53 +1,16 @@
-import type { Task, TaskPriority } from "./types.js";
-import { loadTasks, saveTasks } from "./storage.js";
-import { addTask, deleteTask, toggleTask } from "./tasks.js";
-import { renderTasks } from "./render.js";
-import { setupForm } from "./form.js";
+import { setupForm } from "./form.js"; // Hämtar formulär-starten
+import { renderTasks } from "./render.js"; // Hämtar render-funktionen
+import { loadTasks } from "./storage.js"; // Hämtar sparade tasks
+import { setTasks } from "./tasks.js"; // Hämtar funktion för att lägga in sparade tasks
 
-// Hämta HTML-element
-const taskForm = document.querySelector("#task-form") as HTMLFormElement;
-const taskInput = document.querySelector("#task-input") as HTMLInputElement;
-const priorityInput = document.querySelector("#priority-input") as HTMLSelectElement;
-const taskList = document.querySelector("#task-list") as HTMLUListElement;
+const title = document.querySelector("#title") as HTMLHeadingElement; // Hämtar rubriken
 
-// Ladda tasks
-let tasks: Task[] = loadTasks();
+title.textContent = "Mina Tasks"; // Ändrar rubriken så appen känns mer egen
 
-// Uppdatera appen
-function updateApp(): void {
-  saveTasks(tasks);
+const savedTasks = loadTasks(); // Läser tasks från localStorage när appen startar
 
-  renderTasks(tasks, taskList, {
-    onToggle: handleToggleTask,
-    onDelete: handleDeleteTask
-  });
-}
+setTasks(savedTasks); // Lägger in sparade tasks i arrayen
 
-// Lägg till task
-function handleAddTask(name: string, priority: TaskPriority): void {
-  tasks = addTask(tasks, name, priority);
-  updateApp();
-}
+setupForm(); // Startar formuläret
 
-// Ändra task-status
-function handleToggleTask(id: number): void {
-  tasks = toggleTask(tasks, id);
-  updateApp();
-}
-
-// Ta bort task
-function handleDeleteTask(id: number): void {
-  tasks = deleteTask(tasks, id);
-  updateApp();
-}
-
-// Starta formulär
-setupForm(taskForm, taskInput, priorityInput, {
-  onAdd: handleAddTask
-});
-
-// Visa tasks när sidan öppnas
-renderTasks(tasks, taskList, {
-  onToggle: handleToggleTask,
-  onDelete: handleDeleteTask
-});
+renderTasks(); // Visar tasks direkt när sidan öppnas

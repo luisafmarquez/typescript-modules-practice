@@ -1,33 +1,36 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <title>Task Tracker Moduler</title>
-</head>
-<body>
+<!DOCTYPE html> 
+<html lang="en">
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Gör sidan bättre på mobil -->
+  <title>Task Tracker</title> <!-- Titel i webbläsaren -->
+</head> 
 
-  <h1>Task Tracker</h1>
+<body> <!-- Här kommer allt som syns -->
 
-  <form id="task-form">
-    <input
-      id="task-input"
-      type="text"
-      placeholder="Ny task"
-    >
+  <h1 id="title">Task Tracker</h1> <!-- Rubrik för appen -->
 
-    <select id="priority-input">
-      <option value="low">Low</option>
-      <option value="medium" selected>Medium</option>
-      <option value="high">High</option>
-    </select>
+  <form id="task-form"> <!-- Formulär så vi kan skicka in en task på rätt sätt -->
 
-    <button type="submit">Add Task</button>
-  </form>
+    <input id="task-input" type="text" placeholder="New task"> <!-- Här skriver man taskens namn -->
 
-  <h2>Mina tasks</h2>
+    <select id="priority-input"> <!-- Här väljer man prioritet -->
+      <option value="low">Low</option> <!-- Låg prioritet -->
+      <option value="medium" selected>Medium</option> <!-- Medium är standard -->
+      <option value="high">High</option> <!-- Hög prioritet -->
+    </select> <!-- Slut på dropdown -->
 
-  <ul id="task-list"></ul>
+    <button type="submit">Add Task</button> <!-- Submit-knapp för formuläret -->
 
-  <script type="module" src="./dist/main.js"></script>
-</body>
-</html>
+  </form> <!-- Slut på formuläret -->
+
+  <p id="error-message"></p> <!-- Här visar jag felmeddelanden -->
+
+  <ul id="task-list"></ul> <!-- Här visas alla tasks -->
+
+  <p id="stats"></p> <!-- Här visas statistik -->
+
+  <script type="module" src="./dist/main.js"></script> <!-- Kopplar till JavaScript från TypeScript -->
+
+</body> <!-- Slut på body -->
+</html> <!-- Slut på HTML -->
