@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Girls Coding Night",
+    "category": "Tech",
+    "isFree": true
+  },
+  {
+    "id": 2,
+    "title": "Makeup & Beauty Workshop",
+    "category": "Beauty",
+    "isFree": false
+  },
+  {
+    "id": 3,
+    "title": "Women in Tech Meetup",
+    "category": "Networking",
+    "isFree": true
+  }
+]
