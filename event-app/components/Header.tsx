@@ -14,6 +14,9 @@ export default function Header() {
           <Link href="/om-oss" className="hover:text-blue-300">
             Om oss
           </Link>
+          <Link href="/futurama" className="hover:text-pink-300">
+  Futurama
+</Link>
         </div>
       </nav>
     </header>
